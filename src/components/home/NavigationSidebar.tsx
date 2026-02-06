@@ -1,14 +1,15 @@
+import { NavLink } from 'react-router-dom';
 import { Home, Search, Bell, Mail, Bookmark, Users, User } from 'lucide-react';
 
 export function NavigationSidebar() {
   const menuItems = [
-    { icon: Home, label: 'HOME', active: true },
-    { icon: Search, label: 'EXPLORE' },
-    { icon: Bell, label: 'NOTIFICATIONS' },
-    { icon: Mail, label: 'MESSAGES' },
-    { icon: Bookmark, label: 'BOOKMARKS' },
-    { icon: Users, label: 'COMMUNITIES' },
-    { icon: User, label: 'PROFILE' },
+    { icon: Home, label: 'HOME', to: '/' },
+    { icon: Search, label: 'EXPLORE', to: '/explore' },
+    { icon: Bell, label: 'NOTIFICATIONS', to: '/notifications' },
+    { icon: Mail, label: 'MESSAGES', to: '/messages' },
+    { icon: Bookmark, label: 'BOOKMARKS', to: '/bookmarks' },
+    { icon: Users, label: 'COMMUNITIES', to: '/communities' },
+    { icon: User, label: 'PROFILE', to: '/profile' },
   ];
 
   return (
@@ -23,17 +24,20 @@ export function NavigationSidebar() {
 
       <nav className="flex-1 space-y-2">
         {menuItems.map((item) => (
-          <button
+          <NavLink
             key={item.label}
-            className={`w-full flex items-center gap-4 px-4 py-4 text-base font-bold uppercase tracking-tight border-2 transition-colors ${
-              item.active
-                ? 'bg-black text-white border-black'
-                : 'bg-white text-black border-gray-400 hover:bg-gray-100'
-            }`}
+            to={item.to}
+            className={({ isActive }) =>
+              `w-full flex items-center gap-4 px-4 py-4 text-base font-bold uppercase tracking-tight border-2 transition-colors ${
+                isActive
+                  ? 'bg-black text-white border-black'
+                  : 'bg-white text-black border-gray-400 hover:bg-gray-100'
+              }`
+            }
           >
             <item.icon className="w-6 h-6" />
             <span>{item.label}</span>
-          </button>
+          </NavLink>
         ))}
       </nav>
 

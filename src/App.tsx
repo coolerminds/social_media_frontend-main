@@ -5,6 +5,7 @@ import AuthProvider from './providers/AuthProvider';
 import HomeFeed from './components/home/HomeFeed';
 import LoginPage from './components/auth/LoginPage';
 import SignupPage from './components/auth/SignupPage';
+import CursorTrail from './components/effects/CursorTrail';
 import ExplorePage from './pages/ExplorePage';
 import NotificationsPage from './pages/NotificationsPage';
 import MessagesPage from './pages/MessagesPage';
@@ -16,6 +17,7 @@ import SearchPage from './pages/SearchPage';
 function App() {
   return (
     <BrowserRouter>
+      <CursorTrail />
       <AuthProvider>
         <Routes>
           <Route path="/login" element={<LoginPage />} />

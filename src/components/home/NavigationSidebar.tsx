@@ -2,9 +2,11 @@ import { NavLink } from 'react-router-dom';
 import React, { useState } from 'react';
 import { Home, Search, Bell, Mail, Bookmark, Users, User } from 'lucide-react';
 import PostModal from './PostModal';
+import { useAuth } from '../../hooks/useAuth';
 
 export function NavigationSidebar() {
   const [postOpen, setPostOpen] = useState(false);
+  const { logout } = useAuth();
   const menuItems = [
     { icon: Home, label: 'HOME', to: '/', end: true },
     { icon: Search, label: 'EXPLORE', to: '/explore' },
@@ -54,13 +56,21 @@ export function NavigationSidebar() {
         POST
       </button>
 
-      <div className="flex items-center gap-3 p-4 border-2 border-gray-400">
-        <div className="w-12 h-12 bg-gray-300 border-2 border-black flex-shrink-0" />
-        <div className="flex-1 min-w-0">
-          <div className="font-bold text-sm truncate text-black uppercase">YOUR NAME</div>
-          <div className="text-gray-600 text-xs truncate uppercase">@YOURNAME</div>
+        <div className="flex items-center gap-3 p-4 border-2 border-gray-400">
+          <div className="w-12 h-12 bg-gray-300 border-2 border-black flex-shrink-0" />
+          <div className="flex-1 min-w-0">
+            <div className="font-bold text-sm truncate text-black uppercase">YOUR NAME</div>
+            <div className="text-gray-600 text-xs truncate uppercase">@YOURNAME</div>
+          </div>
         </div>
-      </div>
+
+        <button
+          type="button"
+          onClick={logout}
+          className="mt-4 w-full border-4 border-black bg-white py-3 text-xs font-bold uppercase tracking-tight text-black btn-dynamic"
+        >
+          Log out
+        </button>
       </aside>
       <PostModal open={postOpen} onClose={() => setPostOpen(false)} />
     </>

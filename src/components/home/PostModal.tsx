@@ -1,6 +1,7 @@
 import React, { useEffect, useLayoutEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import { X, Image, Smile, Calendar, MapPin } from 'lucide-react';
+import { X } from 'lucide-react';
+import ComposePanel from './ComposePanel';
 
 interface PostModalProps {
   open: boolean;
@@ -65,34 +66,7 @@ export default function PostModal({ open, onClose }: PostModalProps) {
         </div>
 
         <div className="p-6 space-y-4">
-          <div className="flex gap-4">
-            <div className="w-14 h-14 bg-gray-300 border-2 border-black flex-shrink-0" />
-            <textarea
-              placeholder="WHAT'S HAPPENING?"
-              className="w-full text-base resize-none border-2 border-gray-400 outline-none placeholder-gray-500 min-h-[160px] p-4 font-medium"
-            />
-          </div>
-
-          <div className="flex items-center justify-between pt-4 border-t-2 border-gray-300">
-            <div className="flex gap-2">
-              <button className="p-2 border-2 border-black bg-white text-black btn-dynamic" aria-label="Add image">
-                <Image className="w-5 h-5" />
-              </button>
-              <button className="p-2 border-2 border-black bg-white text-black btn-dynamic" aria-label="Add emoji">
-                <Smile className="w-5 h-5" />
-              </button>
-              <button className="p-2 border-2 border-black bg-white text-black btn-dynamic" aria-label="Schedule">
-                <Calendar className="w-5 h-5" />
-              </button>
-              <button className="p-2 border-2 border-black bg-white text-black btn-dynamic" aria-label="Add location">
-                <MapPin className="w-5 h-5" />
-              </button>
-            </div>
-
-            <button className="bg-red-600 text-white px-8 py-3 border-4 border-red-600 font-bold uppercase text-sm tracking-tight btn-dynamic">
-              Post
-            </button>
-          </div>
+          <ComposePanel minHeight={160} />
         </div>
       </div>
     </div>

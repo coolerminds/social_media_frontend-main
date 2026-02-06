@@ -1,4 +1,7 @@
+import React, { useLayoutEffect, useRef, useState } from 'react';
+import { gsap } from 'gsap';
 import { Heart, MessageCircle, Repeat2, Share, MoreHorizontal } from 'lucide-react';
+import CommentSection from './CommentSection';
 
 export interface Post {
   id: string;
@@ -23,9 +26,44 @@ interface PostCardProps {
 
 export function PostCard({ post }: PostCardProps) {
   const borderColor = post.borderColor || 'border-gray-400';
+  const [showComments, setShowComments] = useState(false);
+  const commentsRef = useRef<HTMLDivElement>(null);
 
+  const comments = [
+    {
+      id: `${post.id}-c1`,
+      author: 'Alex Rivera',
+      handle: 'alexr',
+      content: 'Love the energy here. The layout feels sharp and focused.',
+      timestamp: '1h',
+    },
+    {
+      id: `${post.id}-c2`,
+      author: 'Sam Lee',
+      handle: 'samlee',
+      content: 'The contrast and spacing make this super readable.',
+      timestamp: '30m',
+    },
+  ];
+
+  useLayoutEffect(() => {
+    const element = commentsRef.current;
+    if (!element) return;
+
+    if (showComments) {
+      gsap.set(element, { display: 'block' });
+      gsap.fromTo(
+        element,
+        { height: 0, opacity: 0 },
+        { height: 'auto', opacity: 1, duration: 0.35, ease: 'power2.out' }
+      );
+    } else {
+      gsap.to(element, { height: 0, opacity: 0, duration: 0.25, ease: 'power2.in' });
+    }
+  }, [showComments]);
+  
   return (
-    <article className={`border-4 ${borderColor} bg-white mb-6 p-8`}>
+    <article className={`border-4 ${borderColor} bg-white mb-6 p-8`} data-reveal>
       <div className="flex gap-6">
         <div className="w-16 h-16 bg-gray-300 border-2 border-black flex-shrink-0" />
         <div className="flex-1 min-w-0">
@@ -48,7 +86,14 @@ export function PostCard({ post }: PostCardProps) {
           )}
 
           <div className="flex gap-8 pt-4 border-t-2 border-gray-300">
-            <button className="flex items-center gap-3 text-black uppercase text-sm font-bold" aria-label="Replies">
+            <button
+              className={`flex items-center gap-3 uppercase text-sm font-bold ${
+                showComments ? 'text-white bg-black px-3 py-1 border-2 border-black' : 'text-black'
+              }`}
+              aria-label="Replies"
+              aria-expanded={showComments}
+              onClick={() => setShowComments((prev) => !prev)}
+            >
               <MessageCircle className="w-5 h-5" />
               <span>{post.replies}</span>
             </button>
@@ -66,6 +111,15 @@ export function PostCard({ post }: PostCardProps) {
             <button className="text-black ml-auto" aria-label="Share">
               <Share className="w-5 h-5" />
             </button>
+          </div>
+
+          <div
+            ref={commentsRef}
+            className="mt-4 overflow-hidden"
+            style={{ height: 0, opacity: 0 }}
+            aria-hidden={!showComments}
+          >
+            <CommentSection comments={comments} />
           </div>
         </div>
       </div>

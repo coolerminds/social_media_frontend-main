@@ -3,7 +3,7 @@ import { Home, Search, Bell, Mail, Bookmark, Users, User } from 'lucide-react';
 
 export function NavigationSidebar() {
   const menuItems = [
-    { icon: Home, label: 'HOME', to: '/' },
+    { icon: Home, label: 'HOME', to: '/', end: true },
     { icon: Search, label: 'EXPLORE', to: '/explore' },
     { icon: Bell, label: 'NOTIFICATIONS', to: '/notifications' },
     { icon: Mail, label: 'MESSAGES', to: '/messages' },
@@ -27,6 +27,7 @@ export function NavigationSidebar() {
           <NavLink
             key={item.label}
             to={item.to}
+            end={item.end}
             className={({ isActive }) =>
               `w-full flex items-center gap-4 px-4 py-4 text-base font-bold uppercase tracking-tight border-2 transition-colors ${
                 isActive

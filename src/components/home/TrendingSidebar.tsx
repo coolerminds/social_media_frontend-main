@@ -1,3 +1,6 @@
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+
 interface TrendingTopic {
   category: string;
   title: string;
@@ -5,6 +8,9 @@ interface TrendingTopic {
 }
 
 export function TrendingSidebar() {
+  const [query, setQuery] = useState('');
+  const navigate = useNavigate();
+
   const trendingTopics: TrendingTopic[] = [
     { category: 'TECHNOLOGY', title: 'AI DEVELOPMENT', posts: '125K' },
     { category: 'SPORTS', title: 'CHAMPIONSHIP FINALS', posts: '89K' },
@@ -17,15 +23,23 @@ export function TrendingSidebar() {
     { name: 'NEWS DAILY', username: 'NEWSDAILY' },
   ];
 
+  const handleSearch = (event: React.FormEvent) => {
+    event.preventDefault();
+    if (!query.trim()) return;
+    navigate(`/search?q=${encodeURIComponent(query.trim())}`);
+  };
+
   return (
     <aside className="hidden xl:block xl:w-96 h-screen sticky top-0 p-6 bg-white">
-      <div className="relative mb-6">
+      <form className="relative mb-6" onSubmit={handleSearch}>
         <input
           type="text"
           placeholder="SEARCH"
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
           className="w-full bg-white border-4 border-black px-4 py-4 focus:outline-none focus:border-blue-600 text-sm font-bold uppercase tracking-tight placeholder-gray-500"
         />
-      </div>
+      </form>
 
       <div className="bg-gray-200 border-4 border-gray-400 mb-6">
         <h2 className="text-xl px-6 py-4 bg-gray-400 text-black font-bold uppercase tracking-tight">TRENDING</h2>

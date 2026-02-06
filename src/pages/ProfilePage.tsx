@@ -38,7 +38,7 @@ export default function ProfilePage() {
                 <p className="text-sm uppercase text-gray-500">@yourname</p>
               </div>
             </div>
-            <button className="bg-black text-white px-4 py-2 text-xs font-bold uppercase tracking-tight border-2 border-black">
+            <button className="bg-black text-white px-4 py-2 text-xs font-bold uppercase tracking-tight border-2 border-black btn-dynamic">
               Edit profile
             </button>
           </div>

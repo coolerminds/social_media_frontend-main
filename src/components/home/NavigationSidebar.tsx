@@ -1,7 +1,10 @@
 import { NavLink } from 'react-router-dom';
+import React, { useState } from 'react';
 import { Home, Search, Bell, Mail, Bookmark, Users, User } from 'lucide-react';
+import PostModal from './PostModal';
 
 export function NavigationSidebar() {
+  const [postOpen, setPostOpen] = useState(false);
   const menuItems = [
     { icon: Home, label: 'HOME', to: '/', end: true },
     { icon: Search, label: 'EXPLORE', to: '/explore' },
@@ -13,7 +16,8 @@ export function NavigationSidebar() {
   ];
 
   return (
-    <aside className="hidden lg:flex lg:w-72 h-screen sticky top-0 p-6 border-r-4 border-black flex-col bg-white">
+    <>
+      <aside className="hidden lg:flex lg:w-72 h-screen sticky top-0 p-6 border-r-4 border-black flex-col bg-white">
       <div className="mb-8">
         <div className="w-16 h-16 bg-black flex items-center justify-center border-4 border-black">
           <svg className="w-10 h-10 text-white" viewBox="0 0 24 24" fill="currentColor">
@@ -29,7 +33,7 @@ export function NavigationSidebar() {
             to={item.to}
             end={item.end}
             className={({ isActive }) =>
-              `w-full flex items-center gap-4 px-4 py-4 text-base font-bold uppercase tracking-tight border-2 transition-colors ${
+              `w-full flex items-center gap-4 px-4 py-4 text-base font-bold uppercase tracking-tight border-2 transition-colors btn-dynamic ${
                 isActive
                   ? 'bg-black text-white border-black'
                   : 'bg-white text-black border-gray-400 hover:bg-gray-100'
@@ -42,7 +46,11 @@ export function NavigationSidebar() {
         ))}
       </nav>
 
-      <button className="w-full bg-red-600 text-white py-4 px-6 text-base font-bold uppercase tracking-tight border-4 border-red-600 mb-6">
+      <button
+        type="button"
+        onClick={() => setPostOpen(true)}
+        className="w-full bg-red-600 text-white py-4 px-6 text-base font-bold uppercase tracking-tight border-4 border-red-600 mb-6 btn-dynamic"
+      >
         POST
       </button>
 
@@ -53,6 +61,8 @@ export function NavigationSidebar() {
           <div className="text-gray-600 text-xs truncate uppercase">@YOURNAME</div>
         </div>
       </div>
-    </aside>
+      </aside>
+      <PostModal open={postOpen} onClose={() => setPostOpen(false)} />
+    </>
   );
 }

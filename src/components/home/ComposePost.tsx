@@ -17,21 +17,21 @@ export function ComposePost() {
 
             <div className="flex items-center justify-between pt-4 mt-4 border-t-2 border-gray-300">
               <div className="flex gap-2">
-                <button className="p-2 border-2 border-black bg-white text-black" aria-label="Add image">
+                <button className="p-2 border-2 border-black bg-white text-black btn-dynamic" aria-label="Add image">
                   <Image className="w-5 h-5" />
                 </button>
-                <button className="p-2 border-2 border-black bg-white text-black" aria-label="Add emoji">
+                <button className="p-2 border-2 border-black bg-white text-black btn-dynamic" aria-label="Add emoji">
                   <Smile className="w-5 h-5" />
                 </button>
-                <button className="p-2 border-2 border-black bg-white text-black" aria-label="Schedule">
+                <button className="p-2 border-2 border-black bg-white text-black btn-dynamic" aria-label="Schedule">
                   <Calendar className="w-5 h-5" />
                 </button>
-                <button className="p-2 border-2 border-black bg-white text-black" aria-label="Add location">
+                <button className="p-2 border-2 border-black bg-white text-black btn-dynamic" aria-label="Add location">
                   <MapPin className="w-5 h-5" />
                 </button>
               </div>
 
-              <button className="bg-red-600 text-white px-8 py-3 border-4 border-red-600 disabled:opacity-50 disabled:cursor-not-allowed font-bold uppercase text-sm tracking-tight">
+              <button className="bg-red-600 text-white px-8 py-3 border-4 border-red-600 disabled:opacity-50 disabled:cursor-not-allowed font-bold uppercase text-sm tracking-tight btn-dynamic">
                 POST
               </button>
             </div>

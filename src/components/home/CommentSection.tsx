@@ -27,7 +27,7 @@ export default function CommentSection({ comments }: CommentSectionProps) {
             rows={2}
           />
           <div className="flex justify-end mt-2">
-            <button className="bg-black text-white px-4 py-2 text-xs font-bold uppercase tracking-tight border-2 border-black">
+            <button className="bg-black text-white px-4 py-2 text-xs font-bold uppercase tracking-tight border-2 border-black btn-dynamic">
               Post
             </button>
           </div>

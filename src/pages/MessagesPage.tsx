@@ -61,7 +61,7 @@ export default function MessagesPage() {
                 placeholder="Type a message"
                 className="flex-1 border-2 border-gray-400 px-3 py-2 text-sm font-medium focus:outline-none focus:border-black"
               />
-              <button className="bg-black text-white px-4 py-2 text-xs font-bold uppercase tracking-tight border-2 border-black">
+              <button className="bg-black text-white px-4 py-2 text-xs font-bold uppercase tracking-tight border-2 border-black btn-dynamic">
                 Send
               </button>
             </div>

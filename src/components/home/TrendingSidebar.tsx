@@ -64,7 +64,7 @@ export function TrendingSidebar() {
                 <div className="font-bold text-black truncate uppercase text-sm">{user.name}</div>
                 <div className="text-gray-600 text-xs truncate uppercase">@{user.username}</div>
               </div>
-              <button className="bg-black text-white px-4 py-2 text-xs font-bold uppercase tracking-tight border-2 border-black">
+              <button className="bg-black text-white px-4 py-2 text-xs font-bold uppercase tracking-tight border-2 border-black btn-dynamic">
                 FOLLOW
               </button>
             </div>

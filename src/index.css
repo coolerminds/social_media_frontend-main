@@ -18,3 +18,18 @@
     color: #0a0a0a;
   }
 }
+
+.btn-dynamic {
+  transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease, color 160ms ease,
+    border-color 160ms ease;
+}
+
+.btn-dynamic:hover {
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 0 0 #000;
+}
+
+.btn-dynamic:active {
+  transform: translateY(0);
+  box-shadow: none;
+}

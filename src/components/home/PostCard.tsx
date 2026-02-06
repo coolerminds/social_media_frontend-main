@@ -72,7 +72,7 @@ export function PostCard({ post }: PostCardProps) {
               <span className="font-bold text-black uppercase tracking-tight">{post.author.name}</span>
               <span className="text-gray-500 uppercase text-sm">@{post.author.username}</span>
             </div>
-            <button className="text-black" aria-label="More options">
+            <button className="text-black btn-dynamic" aria-label="More options">
               <MoreHorizontal className="w-6 h-6" />
             </button>
           </div>
@@ -89,7 +89,7 @@ export function PostCard({ post }: PostCardProps) {
             <button
               className={`flex items-center gap-3 uppercase text-sm font-bold ${
                 showComments ? 'text-white bg-black px-3 py-1 border-2 border-black' : 'text-black'
-              }`}
+              } btn-dynamic`}
               aria-label="Replies"
               aria-expanded={showComments}
               onClick={() => setShowComments((prev) => !prev)}
@@ -98,17 +98,17 @@ export function PostCard({ post }: PostCardProps) {
               <span>{post.replies}</span>
             </button>
 
-            <button className="flex items-center gap-3 text-black uppercase text-sm font-bold" aria-label="Reposts">
+            <button className="flex items-center gap-3 text-black uppercase text-sm font-bold btn-dynamic" aria-label="Reposts">
               <Repeat2 className="w-5 h-5" />
               <span>{post.retweets}</span>
             </button>
 
-            <button className="flex items-center gap-3 text-black uppercase text-sm font-bold" aria-label="Likes">
+            <button className="flex items-center gap-3 text-black uppercase text-sm font-bold btn-dynamic" aria-label="Likes">
               <Heart className="w-5 h-5" />
               <span>{post.likes}</span>
             </button>
 
-            <button className="text-black ml-auto" aria-label="Share">
+            <button className="text-black ml-auto btn-dynamic" aria-label="Share">
               <Share className="w-5 h-5" />
             </button>
           </div>

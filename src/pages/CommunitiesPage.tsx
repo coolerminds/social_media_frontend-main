@@ -34,10 +34,10 @@ export default function CommunitiesPage() {
             </div>
             <p className="text-sm text-gray-600 mt-3">{community.description}</p>
             <div className="mt-4 flex items-center gap-3">
-              <button className="bg-black text-white px-4 py-2 text-xs font-bold uppercase tracking-tight border-2 border-black">
+              <button className="bg-black text-white px-4 py-2 text-xs font-bold uppercase tracking-tight border-2 border-black btn-dynamic">
                 Join
               </button>
-              <button className="border-2 border-black px-4 py-2 text-xs font-bold uppercase tracking-tight text-black">
+              <button className="border-2 border-black px-4 py-2 text-xs font-bold uppercase tracking-tight text-black btn-dynamic">
                 Preview
               </button>
             </div>
